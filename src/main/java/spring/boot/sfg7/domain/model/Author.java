@@ -1,6 +1,6 @@
 //: spring.boot.sfg.domain.Author.java
 
-package spring.boot.sfg7.domain;
+package spring.boot.sfg7.domain.model;
 
 
 import org.springframework.data.annotation.Id;

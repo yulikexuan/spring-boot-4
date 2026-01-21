@@ -1,8 +1,8 @@
-package spring.boot.sfg7.repository;
+package spring.boot.sfg7.domain.repository;
 
 
 import org.springframework.data.repository.ListCrudRepository;
-import spring.boot.sfg7.domain.Book;
+import spring.boot.sfg7.domain.model.Book;
 
 
 public interface BookRepository extends ListCrudRepository<Book, Long> {
