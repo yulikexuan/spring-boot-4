@@ -3,6 +3,7 @@
 package spring.boot.sfg7.bootstrap;
 
 
+import java.util.List;
 import java.util.Set;
 
 import lombok.RequiredArgsConstructor;
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Service;
 import spring.boot.sfg7.domain.model.Author;
 import spring.boot.sfg7.domain.model.AuthorRef;
 import spring.boot.sfg7.domain.model.Book;
+import spring.boot.sfg7.domain.model.BookDto;
 import spring.boot.sfg7.domain.model.Publisher;
 import spring.boot.sfg7.domain.repository.AuthorRepository;
 import spring.boot.sfg7.domain.repository.BookRepository;
 import spring.boot.sfg7.domain.repository.PublisherRepository;
+import spring.boot.sfg7.domain.service.BookService;
 
 
 @Slf4j
@@ -26,6 +29,8 @@ class BootstrapData implements CommandLineRunner {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
     private final PublisherRepository publisherRepository;
+
+    private final BookService bookService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -73,6 +78,8 @@ class BootstrapData implements CommandLineRunner {
         log.info(">>> Saved Book: {}", noEjb);
         log.info(">>> Saved Author: {}", rod);
 
+        List<BookDto> books = bookService.findAllBooks();
+        log.info(">>> All Books: {}", books);
     }
 
 } /// :~

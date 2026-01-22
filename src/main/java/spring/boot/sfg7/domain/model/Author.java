@@ -18,4 +18,9 @@ public record Author(
     public static Author of(String firstName, String lastName) {
         return new Author(null, firstName, lastName);
     }
+
+    public String fullName() {
+        return firstName + " " + lastName;
+    }
+
 }
