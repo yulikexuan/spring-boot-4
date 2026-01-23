@@ -60,6 +60,7 @@
 	</build>
 
 	<modules>
+		<module>di</module>
 		<module>web-app-demo</module>
 	</modules>
 	
