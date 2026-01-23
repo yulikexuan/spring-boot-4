@@ -80,6 +80,9 @@ class BootstrapData implements CommandLineRunner {
 
         List<BookDto> books = bookService.findAllBooks();
         log.info(">>> All Books: {}", books);
+
+        List<BookDto> booksWithPublisher = bookRepository.findBooksWithPublisher();
+        log.info(">>> Books with Publisher: {}", booksWithPublisher);
     }
 
 } /// :~

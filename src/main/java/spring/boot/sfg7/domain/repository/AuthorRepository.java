@@ -6,4 +6,7 @@ import spring.boot.sfg7.domain.model.Author;
 
 
 public interface AuthorRepository extends ListCrudRepository<Author, Long> {
+
+    // SELECT book.title AS book_title, publisher.name AS publisher_name FROM book INNER JOIN publisher ON book.publisher_id = publisher.id;
+
 }

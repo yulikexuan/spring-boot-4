@@ -3,6 +3,8 @@
 package spring.boot.sfg7.domain.service;
 
 
+import java.util.stream.Collectors;
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.NullMarked;
@@ -37,14 +39,14 @@ class BookToBookDtoMapperImpl implements BookToBookDtoMapper {
                 .map(Publisher::name)
                 .orElse("Unknown Publisher");
 
-        var authors = book.authors().stream()
+        var authorNames = book.authors().stream()
                 .map(AuthorRef::authorId)
                 .map(authorRepository::findById)
                 .flatMap(java.util.Optional::stream)
                 .map(Author::fullName)
-                .toList();
+                .collect(Collectors.joining(", "));
 
-        return new BookDto(book.title(), book.isbn(), publisher, authors);
+        return new BookDto(book.title(), book.isbn(), publisher, authorNames);
     }
 
 }

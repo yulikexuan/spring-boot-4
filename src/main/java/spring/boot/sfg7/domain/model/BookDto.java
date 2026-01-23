@@ -3,8 +3,6 @@
 package spring.boot.sfg7.domain.model;
 
 
-import java.util.List;
-
 import org.jspecify.annotations.NullMarked;
 
 
@@ -13,6 +11,6 @@ public record BookDto(
         String title,
         String isbn,
         String publisher,
-        List<String> authors) {
+        String authorNames) {
 
 } /// :~
