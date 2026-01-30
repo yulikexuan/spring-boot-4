@@ -78,6 +78,7 @@
 
 	<modules>
 		<module>di</module>
+		<module>data-jdbc</module>
 		<module>web-app-demo</module>
 	</modules>
 	
