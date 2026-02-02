@@ -9,4 +9,5 @@ open module spring.boot.di {
     requires spring.boot.autoconfigure;
     requires spring.context;
     requires spring.core;
+    requires jdk.compiler;
 }
