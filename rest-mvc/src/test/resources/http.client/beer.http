@@ -1,0 +1,81 @@
+### Get all Beers
+
+
+GET http://localhost:8080/sfg7/api/v1/beer
+Content-Type: application/json
+Accept: application/json
+
+> {%
+	client.test(">>> Response status is 200", function () {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+%}
+
+
+###
+
+
+GET http://localhost:8080/sfg7/api/v1/beer/b3d6319c-a8d6-41f4-b373-57004f58e67f
+Content-Type: application/json
+Accept: application/json
+
+> {%
+	client.test(">>> Response status is 200", function () {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+	client.test(">>> Response contains only one Beer object", function () {
+		client.assert(!Array.isArray(response.body), ">>> Response body should not be an array");
+		client.assert(typeof response.body === 'object', "Response body should be an object");
+	});
+%}
+
+
+###
+
+
+POST http://localhost:8080/sfg7/api/v1/beer
+Content-Type: application/json
+Accept: application/json
+
+{
+    "version": 1,
+    "beerName": "Heineken Silver",
+    "beerStyle": "LAGER",
+    "upc": "34567",
+    "quantityOnHand": 202,
+    "price": 1260
+}
+
+
+### Update Beer by Beer ID
+
+PUT http://localhost:8080/sfg7/api/v1/beer/2b1175b0-9811-4039-be1e-77bd3b5e65db
+Content-Type: application/json
+Accept: application/json
+
+{
+    "beerName": "Light Sunshine City",
+    "beerStyle": "PALE_ALE",
+    "upc": "123456",
+    "quantityOnHand": 99,
+    "price": 1299
+}
+
+
+### Delete Beer by ID
+
+DELETE http://localhost:8080/sfg7/api/v1/beer/6636fc11-1c70-4ef4-b2ac-fc2b5a949f6d
+Content-Type: application/json
+Accept: application/json
+
+
+### Patch Beer by Beer ID
+
+PATCH http://localhost:8080/sfg7/api/v1/beer/b3d6319c-a8d6-41f4-b373-57004f58e67f
+Content-Type: application/json
+Accept: application/json
+
+{
+  "price": 1199
+}

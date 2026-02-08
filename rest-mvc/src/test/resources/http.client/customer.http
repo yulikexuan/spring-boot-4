@@ -1,0 +1,72 @@
+### Get all Customers
+
+GET http://localhost:8080/sfg7/api/v1/customer
+Content-Type: application/json
+Accept: application/json
+
+> {%
+	client.test(">>> Response status is 200", function () {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+%}
+
+
+###
+
+
+GET http://localhost:8080/sfg7/api/v1/customer/109b47cf-8986-4efb-a623-844237bbd936
+Content-Type: application/json
+Accept: application/json
+
+> {%
+	client.test(">>> Response status is 200", function () {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+	client.test(">>> Response contains only one Customer object", function () {
+		client.assert(!Array.isArray(response.body), ">>> Response body should not be an array");
+		client.assert(typeof response.body === 'object', "Response body should be an object");
+	});
+%}
+
+
+### Save a new Customer
+
+POST http://localhost:8080/sfg7/api/v1/customer
+Content-Type: application/json
+Accept: application/json
+
+{
+  "version": 1,
+  "name": "Rogers"
+}
+
+
+### Update Customer by ID
+
+
+PUT http://localhost:8080/sfg7/api/v1/customer/43c4958b-e64c-4617-9e11-844174c45d05
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Rogers"
+}
+
+
+### Delete Customer by Customer ID
+
+DELETE http://localhost:8080/sfg7/api/v1/customer/454be715-a5ff-491b-b49a-39153dfa4e5e
+Content-Type: application/json
+Accept: application/json
+
+
+### Patch Customer by Customer ID
+
+PATCH http://localhost:8080/sfg7/api/v1/customer/109b47cf-8986-4efb-a623-844237bbd936
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Telus"
+}

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: rest-mvc
+  datasource:
+    url: jdbc:postgresql://localhost:54316/postgres?currentSchema=public
+    username: postgres
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG
