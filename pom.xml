@@ -26,17 +26,35 @@
 		<maven.compiler.release>${java.version}</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
+		<hkj-spring-boot-starter.version>0.3.4</hkj-spring-boot-starter.version>
+		<guava.version>33.5.0-jre</guava.version></properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.higher-kinded-j</groupId>
+			<artifactId>hkj-spring-boot-starter</artifactId>
+			<version>${hkj-spring-boot-starter.version}</version>
+		</dependency>
+
 	</dependencies>
-	
+
 	<build>
 
 		<plugins>
@@ -51,6 +69,11 @@
 							<artifactId>lombok</artifactId>
 							<version>${lombok.version}</version>
 						</path>
+						<path>
+							<groupId>io.github.higher-kinded-j</groupId>
+							<artifactId>hkj-processor-plugins</artifactId>
+							<version>${hkj-spring-boot-starter.version}</version>
+						</path>
 					</annotationProcessorPaths>
 					<fork>true</fork>
 					<compilerArgs>
@@ -58,7 +81,7 @@
 					</compilerArgs>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -79,13 +102,34 @@
 					<argLine>-Xshare:off -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar</argLine>
 				</configuration>
 			</plugin>
-   
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*IT.java</include>
+					</includes>
+					<testFailureIgnore>false</testFailureIgnore>
+				</configuration>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 
 	</build>
 
 	<modules>
 		<module>di</module>
+		<module>data-optics</module>
 		<module>data-jdbc</module>
 		<module>rest-mvc</module>
 		<module>web-app-demo</module>
