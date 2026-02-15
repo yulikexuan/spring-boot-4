@@ -27,7 +27,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<hkj-spring-boot-starter.version>0.3.4</hkj-spring-boot-starter.version>
-		<guava.version>33.5.0-jre</guava.version></properties>
+		<guava.version>33.5.0-jre</guava.version>
+	</properties>
 
 	<dependencies>
 
@@ -132,6 +133,7 @@
 		<module>data-optics</module>
 		<module>data-jdbc</module>
 		<module>rest-mvc</module>
+		<module>retry</module>
 		<module>web-app-demo</module>
 	</modules>
 	

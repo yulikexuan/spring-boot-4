@@ -1,4 +1,4 @@
-package spring.boot.sfg7.data;
+package guru.retry;
 
 
 import org.junit.jupiter.api.Disabled;
@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Disabled
 @SpringBootTest
-class DataOpticsApplicationIT {
+class RetryApplicationIT {
 
     @Test
     void contextLoads() {
