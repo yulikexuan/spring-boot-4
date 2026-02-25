@@ -86,10 +86,40 @@ class Switches {
             case null -> 0;
             case Box(var x, var y) when x.name() != null -> 1;
             case Box(Item(var q), Item(var r)) when r.toUpperCase().equals("PENCIL") -> 2;
+            // Pattern matching allows you to match with a supertype of the actual field type
+            // This is legal pattern matching - you can use a more general type
+            // (like CharSequence) to match a more specific type (like String),
+            // similar to regular polymorphism.
             case Box(Item(CharSequence w), Item(String v)) when v.toLowerCase().equals("pencil") -> 3;
             case Box(Item(String a), Item(String bb)) -> 4;
             default -> 5;
         });
+
+    }
+
+    static int oldSwitches(final String defaultFlavor) {
+
+        var iceCream = "mintChocolateChip";
+        var favorite = "cottonCandy";
+
+        final String backupChoice = "frenchVanilla";
+
+        switch(iceCream) {
+            /*
+             * Stacking `default:` and `case ...`:
+             *   labels on the same statement is allowed in classic switch blocks
+             *   (though not in switch expressions with arrow -> syntax).
+             */
+            default: case "A"+"Z", "W" : return 21;
+            // The multi-value case label syntax (added in Java 14 via JEP 361)
+            // uses a single case keyword followed by comma-separated values:
+            // The case keyword is the opener for the entire label
+            //   — it is not repeated per value.
+            //   Writing case "grape", case "butterPecan" is simply a grammar violation;
+            //   the parser sees case "grape", and then expects another value expression,
+            //   but finds the keyword case instead.
+            // case "grape", case "butterPecan" : return 1;
+        }
 
     }
 

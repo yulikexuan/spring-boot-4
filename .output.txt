@@ -1,0 +1,240 @@
+commit 49849e1b3f310b01c09e4a2f4b1a01456c541d69 (HEAD -> main, github/main)
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Sat Feb 14 22:33:15 2026 -0500
+    Add new module of Spring core retryable
+data-optics/src/test/java/spring/boot/sfg7/data/DataOpticsApplicationIT.java
+pom.xml
+rest-mvc/src/test/java/spring/boot/sfg7/rest/mvc/RestMvcApplicationIT.java
+retry/.gitattributes
+retry/.mvn/wrapper/maven-wrapper.properties
+retry/mvnw
+retry/mvnw.cmd
+retry/pom.xml
+retry/src/main/java/guru/retry/RetryApplication.java
+retry/src/main/java/guru/retry/config/RetryCfg.java
+retry/src/main/java/guru/retry/domain/model/RetryConfigPropertiesSpec.java
+retry/src/main/java/guru/retry/service/RetryableService.java
+retry/src/main/java/guru/retry/service/RetryableServiceListener.java
+retry/src/main/java/guru/retry/web/controller/RetryController.java
+retry/src/main/resources/application.yml
+retry/src/test/java/guru/retry/RetryApplicationIT.java
+commit 248af709afffeae9f7277dcb955a6b6baaf8e394
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Sat Feb 14 08:31:50 2026 -0500
+    Add new module of data optics
+data-optics/.gitattributes
+data-optics/.gitignore
+data-optics/.mvn/wrapper/maven-wrapper.properties
+data-optics/mvnw
+data-optics/mvnw.cmd
+data-optics/pom.xml
+data-optics/src/main/java/spring/boot/sfg7/data/DataOpticsApplication.java
+data-optics/src/main/java/spring/boot/sfg7/data/domain/optics/Address.java
+data-optics/src/main/java/spring/boot/sfg7/data/domain/optics/Department.java
+data-optics/src/main/java/spring/boot/sfg7/data/domain/optics/Employee.java
+data-optics/src/main/resources/application.properties
+data-optics/src/test/java/spring/boot/sfg7/data/DataOpticsApplicationIT.java
+data-optics/src/test/java/spring/boot/sfg7/data/domain/optics/AddressTest.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/generics/GenericMethods.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/hkj/optics/Address.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/hkj/optics/Company.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/hkj/optics/Department.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/hkj/optics/Employee.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/hkj/optics/Lens.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/io/FilesFinding.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/io/Streams.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/lambda/RunnableVsCallable.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/literals/Booleans.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/literals/StringBlocks.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/literals/StringVsNumber.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/math/Maths.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/overloading/OverloadingMethods.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/pattern/Switches.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/record/Constructors.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/time/DateTimeFormatters.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/time/Periods.java
+di/src/test/java/spring/boot/di/domain/model/jdk25/hkj/optics/AddressTest.java
+di/src/test/java/spring/boot/di/domain/model/jdk25/hkj/optics/EmployeeTest.java
+pom.xml
+rest-mvc/src/test/java/spring/boot/sfg7/rest/mvc/web/controller/BeerControllerTest.java
+commit 6c181a51aeedfe1f18609749b3c9e79eee52a872
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Sun Feb 8 15:38:46 2026 -0500
+    Spring Boot 4 REST MVC
+di/src/main/java/spring/boot/di/domain/model/jdk25/Operators.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/collections/sequenced/TreeMapAsSequenced.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/flow/LoopBreaks.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/functional/NegatePredicate.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/functional/TypeInferring.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/generics/TypeParameters.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/inheritence/Accessors.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/inheritence/animal/Frog.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/pattern/Switches.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/sealed/Dance.java
+rest-mvc/pom.xml
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/bootstrap/BootstrapData.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/config/Sfg7BeerCfg.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/beer/model/Beer.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/beer/model/BeerStyle.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/beer/repository/BeerRepository.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/beer/service/BeerService.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/customer/model/Customer.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/customer/repository/CustomerRepository.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/customer/service/CustomerService.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/web/controller/BeerController.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/web/controller/CustomerController.java
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/web/util/WebUtils.java
+rest-mvc/src/main/resources/application.properties
+rest-mvc/src/main/resources/application.yml
+rest-mvc/src/main/resources/schema.sql
+rest-mvc/src/main/resources/schema_renew.sql
+rest-mvc/src/test/resources/http.client/beer.http
+rest-mvc/src/test/resources/http.client/customer.http
+commit 82b994522fc7317ff23356b3692ae647295d3f87
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Mon Feb 2 11:22:46 2026 -0500
+    Adds new module rest-mvc
+di/src/main/java/module-info.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Operators.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Periods.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Scanners.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Streams.java
+pom.xml
+rest-mvc/.gitattributes
+rest-mvc/.gitignore
+rest-mvc/.mvn/wrapper/maven-wrapper.properties
+rest-mvc/mvnw
+rest-mvc/mvnw.cmd
+rest-mvc/pom.xml
+rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/RestMvcApplication.java
+rest-mvc/src/main/resources/application.properties
+rest-mvc/src/test/java/spring/boot/sfg7/rest/mvc/RestMvcApplicationIT.java
+commit f3127f007cd7add1edff3132d55e5e03a4bd1f74
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Fri Jan 30 17:55:32 2026 -0500
+    Spring DI
+README.md
+data-jdbc/README.md
+data-jdbc/pom.xml
+data-jdbc/src/main/java/spring/boot/sfg7/SpringDataJdbcApplication.java
+data-jdbc/src/main/java/spring/boot/sfg7/bootstrap/BootstrapData.java
+data-jdbc/src/main/java/spring/boot/sfg7/config/Sfg7DataJdbcCfg.java
+data-jdbc/src/main/java/spring/boot/sfg7/domain/school/model/Course.java
+data-jdbc/src/main/java/spring/boot/sfg7/domain/school/model/Enrollment.java
+data-jdbc/src/main/java/spring/boot/sfg7/domain/school/model/EnrollmentId.java
+data-jdbc/src/main/java/spring/boot/sfg7/domain/school/model/Student.java
+data-jdbc/src/main/java/spring/boot/sfg7/domain/school/repository/CourseRepository.java
+data-jdbc/src/main/java/spring/boot/sfg7/domain/school/repository/StudentRepository.java
+data-jdbc/src/main/resources/application.yaml
+data-jdbc/src/main/resources/schema.sql
+data-jdbc/src/main/resources/schema_init.sql
+data-jdbc/src/test/java/spring/boot/sfg7/SpringDataJdbcApplicationIT.java
+di/README.md
+di/src/main/java/module-info.java
+di/src/main/java/spring/boot/di/SpringBoot4DiApplication.java
+di/src/main/java/spring/boot/di/config/BeanRegistrationsCfg.java
+di/src/main/java/spring/boot/di/config/Sfg7DiCfg.java
+di/src/main/java/spring/boot/di/controller/BaseGreetingController.java
+di/src/main/java/spring/boot/di/controller/DiController.java
+di/src/main/java/spring/boot/di/controller/EnvController.java
+di/src/main/java/spring/boot/di/controller/I18NController.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/BigDecimals.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/InstanceOfs.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Periods.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Records.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/Sealing.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/StringBuilders.java
+di/src/main/java/spring/boot/di/domain/model/jdk25/StringPools.java
+di/src/main/java/spring/boot/di/service/BaseGreetingService.java
+di/src/main/java/spring/boot/di/service/EnglishGreetingService.java
+di/src/main/java/spring/boot/di/service/EnvService.java
+di/src/main/java/spring/boot/di/service/FrenchGreetingService.java
+di/src/main/java/spring/boot/di/service/GreetingService.java
+di/src/main/java/spring/boot/di/service/LifeCycleDemoService.java
+di/src/main/java/spring/boot/di/service/Presentation.java
+di/src/main/java/spring/boot/di/service/PrimaryGreetingService.java
+di/src/main/java/spring/boot/di/service/WelcomeService.java
+di/src/main/java/spring/boot/sfg7/controller/DiController.java
+di/src/main/java/spring/boot/sfg7/service/GreetingService.java
+di/src/test/java/spring/boot/di/SpringBoot4DiApplicationIT.java
+di/src/test/java/spring/boot/di/SpringBoot4LifeCycleDemoServiceIT.java
+di/src/test/java/spring/boot/di/controller/EnvControllerIT.java
+di/src/test/java/spring/boot/di/controller/I18NControllerIT.java
+di/src/test/java/spring/boot/sfg7/SpringBoot4DiApplicationIT.java
+pom.xml
+commit fc0c33c4bf053869ed655b7d67297abb4c5af529
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Sat Jan 24 08:05:25 2026 -0500
+    Add tests of JDK 25 to DI
+di/src/main/java/spring/boot/sfg7/SpringBoot4DiApplication.java
+di/src/main/java/spring/boot/sfg7/controller/DiController.java
+di/src/main/java/spring/boot/sfg7/domain/model/jdk25/BigDecimals.java
+di/src/main/java/spring/boot/sfg7/domain/model/jdk25/Periods.java
+di/src/main/java/spring/boot/sfg7/domain/model/jdk25/StringBuilders.java
+di/src/main/java/spring/boot/sfg7/domain/model/jdk25/StringPools.java
+di/src/main/java/spring/boot/sfg7/service/BaseGreetingService.java
+di/src/main/java/spring/boot/sfg7/service/GreetingService.java
+di/src/test/java/spring/boot/sfg7/SpringBoot4DiApplicationIT.java
+pom.xml
+commit 42e18fe1597e3344af9d9956163771346d2eaac7
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Fri Jan 23 12:25:41 2026 -0500
+    Adding new di module
+di/pom.xml
+di/src/main/java/spring/boot/sfg7/SpringBoot4DiApplication.java
+di/src/main/java/spring/boot/sfg7/config/Sfg7Cfg.java
+di/src/main/resources/application.yaml
+di/src/test/java/spring/boot/sfg7/SpringBoot4DiApplicationIT.java
+pom.xml
+commit 937d1a7090abf0ff5b8632366e45d21766a00d71
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Fri Jan 23 12:09:48 2026 -0500
+    Make web-app-demo a module in the project
+pom.xml
+web-app-demo/pom.xml
+web-app-demo/src/main/java/spring/boot/sfg7/SpringBoot4Application.java
+web-app-demo/src/main/java/spring/boot/sfg7/bootstrap/BootstrapData.java
+web-app-demo/src/main/java/spring/boot/sfg7/config/Sfg7Cfg.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/Author.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/AuthorRef.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/Book.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/BookDto.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/Publisher.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/jdk25/BigDecimals.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/jdk25/StringBuilders.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/model/jdk25/StringPools.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/repository/AuthorRepository.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/repository/BookRepository.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/repository/PublisherRepository.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/service/BookService.java
+web-app-demo/src/main/java/spring/boot/sfg7/domain/service/BookToBookDtoMapper.java
+web-app-demo/src/main/java/spring/boot/sfg7/web/controller/BookController.java
+web-app-demo/src/main/resources/application.yaml
+web-app-demo/src/main/resources/schema.sql
+web-app-demo/src/main/resources/schema_renew.sql
+web-app-demo/src/main/resources/templates/books.html
+web-app-demo/src/test/java/spring/boot/sfg7/SpringBoot4ApplicationIT.java
+commit e9f3a2a53a5b5f315d684dd11a1ded186ea7fcba
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Fri Jan 23 11:19:46 2026 -0500
+    Complete MVC Demo for Books
+pom.xml
+src/main/java/spring/boot/sfg7/bootstrap/BootstrapData.java
+src/main/java/spring/boot/sfg7/domain/model/BookDto.java
+src/main/java/spring/boot/sfg7/domain/model/jdk25/BigDecimals.java
+src/main/java/spring/boot/sfg7/domain/model/jdk25/StringBuilders.java
+src/main/java/spring/boot/sfg7/domain/model/jdk25/StringPools.java
+src/main/java/spring/boot/sfg7/domain/repository/AuthorRepository.java
+src/main/java/spring/boot/sfg7/domain/repository/BookRepository.java
+src/main/java/spring/boot/sfg7/domain/service/BookToBookDtoMapper.java
+src/main/java/spring/boot/sfg7/web/controller/BookController.java
+src/main/resources/templates/books.html
+commit 848a64d7329d6f4447f6652b8d5e3387650ccc0e
+Author: yulikexuan <yulikexuan@gmail.com>
+Date:   Thu Jan 22 08:15:40 2026 -0500
+    Add BookService
+src/main/java/spring/boot/sfg7/bootstrap/BootstrapData.java
+src/main/java/spring/boot/sfg7/domain/model/Author.java
+src/main/java/spring/boot/sfg7/domain/model/BookDto.java
+src/main/java/spring/boot/sfg7/domain/service/BookService.java
+src/main/java/spring/boot/sfg7/domain/service/BookToBookDtoMapper.java

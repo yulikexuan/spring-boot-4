@@ -1,6 +1,6 @@
-//: spring.boot.sfg7.data.domain.optics.Department.java
+//: spring.boot.sfg7.data.domain.optics.lens.Department.java
 
-package spring.boot.sfg7.data.domain.optics;
+package spring.boot.sfg7.data.domain.optics.lens;
 
 
 import java.util.List;

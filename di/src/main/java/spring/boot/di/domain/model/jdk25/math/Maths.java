@@ -4,6 +4,8 @@ package spring.boot.di.domain.model.jdk25.math;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 
 class Maths {
@@ -34,6 +36,33 @@ class Maths {
 
     public static double area(int base, int height) {
         return ((double) 1 / 2) * (base * height);
+    }
+
+    static void compareDoubleWithInt() {
+        List<Double> numbers = new ArrayList<>();
+        numbers.add(12.0);
+        numbers.add(3.14);
+        numbers.add(3.14);
+        numbers.add(2.718);
+        numbers.add(2.718);
+
+        /*
+         * Yes, `10L == 10` is `true` in Java. This is a valid comparison.
+         * When you compare a `long` and an `int` with `==`,
+         * Java automatically **widens** the `int` to `long` before comparing.
+         * So `10L == 10` becomes `10L == 10L`, which is `true`.
+         *
+         * This is **numeric promotion** Java's binary numeric promotion rules
+         * apply to `==`, `<`, `>`, etc.
+         * The narrower type is always widened to the wider type before the operation.
+         * So `Math.round(n)` returns `long`, and `(int) n.doubleValue()` is an `int`,
+         * but the `==` comparison is perfectly valid
+         * - the `int` is promoted to `long` before comparing. No issue here.
+         */
+        Predicate<Double> pred =n -> Math.round(n) == (int) n.doubleValue();
+
+        numbers.removeIf(pred);
+        System.out.println(numbers);
     }
 
 

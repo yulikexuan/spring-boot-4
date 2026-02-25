@@ -1,6 +1,6 @@
-//: spring.boot.sfg7.data.domain.optics.Address.java
+//: spring.boot.sfg7.data.domain.optics.lens.Address.java
 
-package spring.boot.sfg7.data.domain.optics;
+package spring.boot.sfg7.data.domain.optics.lens;
 
 
 import lombok.Builder;

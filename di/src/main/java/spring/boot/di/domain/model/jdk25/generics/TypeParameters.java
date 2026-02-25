@@ -4,6 +4,7 @@ package spring.boot.di.domain.model.jdk25.generics;
 
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -19,6 +20,16 @@ class TypeParameters {
         Set<? extends RuntimeException> exceptions =
                 // new HashSet<? extends RuntimeException>();
                 new HashSet<RuntimeException>();
+    }
+
+    static void genericParameters(List<Number> list) {
+        Integer data = 123;
+        list.add(data);
+    }
+
+    static void varType() {
+        var names = List.of("John", "Mary");
+        var ages = List.of(25, "ABC");
     }
 
 } /// :~
