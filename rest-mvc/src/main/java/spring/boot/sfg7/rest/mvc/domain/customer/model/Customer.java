@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 import lombok.Builder;
+import org.higherkindedj.optics.annotations.GenerateLenses;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -15,6 +16,7 @@ import org.springframework.util.StringUtils;
 
 @Builder
 @Table("customer")
+@GenerateLenses
 public record Customer(
         @Id UUID id,
         Integer version,
@@ -43,3 +45,4 @@ public record Customer(
     }
 
 }
+

@@ -10,6 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.net.URI;
+import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -83,15 +85,67 @@ class BeerControllerTest {
                 .accept(APPLICATION_JSON);
 
         final ResultMatcher okMatcher = status().isOk();
+        final ResultMatcher contentMatcher = content().contentType(APPLICATION_JSON);
 
         // When
         mockMvc.perform(requestBuilder)
                 .andExpect(okMatcher)
-                .andExpect(content().contentType(APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(beerId));
-                // JsonPathResultMatchers
+                .andExpect(contentMatcher)
+                .andExpect(jsonPath("$.id").value(beerId))
+                .andExpect(jsonPath("$.beerName").value("Heineken Silver"))
+                .andExpect(jsonPath("$.beerStyle").value("LAGER"))
+                .andExpect(jsonPath("$.upc").value("34567"))
+                .andExpect(jsonPath("$.quantityOnHand").value(100))
+                .andExpect(jsonPath("$.price").value(1260));
+    }
 
+    @Test
+    void able_To_Get_All_Beers_In_List() throws Exception {
 
+        // Given
+        List<Beer> beers = List.of(
+                Beer.builder()
+                        .id(UUID.fromString(randomUUID()))
+                        .version(1)
+                        .beerName("Galaxy Cat")
+                        .beerStyle(BeerStyle.PALE_ALE)
+                        .upc("12356")
+                        .price(1299)
+                        .quantityOnHand(122)
+                        .createdDate(Instant.now())
+                        .updateDate(Instant.now())
+                        .build(),
+                Beer.builder()
+                        .id(UUID.fromString(randomUUID()))
+                        .version(1)
+                        .beerName("Crank")
+                        .beerStyle(BeerStyle.PALE_ALE)
+                        .upc("12356222")
+                        .price(1199)
+                        .quantityOnHand(392)
+                        .createdDate(Instant.now())
+                        .updateDate(Instant.now())
+                        .build());
+
+        given(beerService.findAllBeers()).willReturn(beers);
+
+        URI url = ServletUriComponentsBuilder.fromUriString(BEER_URI)
+                .build()
+                .toUri();
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get(url)
+                .accept(APPLICATION_JSON);
+
+        ResultMatcher okMatcher = status().isOk();
+        ResultMatcher contentMatcher = content().contentType(APPLICATION_JSON);
+
+        // When
+        mockMvc.perform(requestBuilder)
+                .andExpect(okMatcher)
+                .andExpect(contentMatcher)
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(beers.size()));
     }
 
 }

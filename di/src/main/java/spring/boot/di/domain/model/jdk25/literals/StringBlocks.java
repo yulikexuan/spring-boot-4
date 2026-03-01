@@ -6,12 +6,31 @@ package spring.boot.di.domain.model.jdk25.literals;
 class StringBlocks {
 
     static void main(String[] args) {
+
+        // analyzeSpaces();
+        theLengthOfStringBlocks();
+    }
+
+    private static void analyzeSpaces() {
         String puzzler = """
            One " \
            Two ""\n
            Three \"""
         """;
         System.out.print(puzzler);
+    }
+
+    static void theLengthOfStringBlocks() {
+
+        String info1 = """
+                1234
+        """;
+
+        String info2 = """
+                1234""";
+
+        System.out.println(">>> info1: " + info1.length());
+        System.out.println(">>> info2: " + info2.length());
     }
 
 } /// :~
