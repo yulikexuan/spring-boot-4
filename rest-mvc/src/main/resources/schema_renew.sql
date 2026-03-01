@@ -1,6 +1,7 @@
 -- Drop tables if they exist (in reverse order due to foreign key constraints)
 DROP TABLE IF EXISTS beer;
 DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS flashcard;
 
 -- Publisher Table
 
@@ -21,3 +22,9 @@ CREATE TABLE customer (
     name        VARCHAR(255),
     created_date     TIMESTAMP,
     update_date      TIMESTAMP);
+
+CREATE TABLE flashcard (
+    id       BIGSERIAL PRIMARY KEY,
+    question VARCHAR(500),
+    answer   VARCHAR(1000),
+    weight   INTEGER);

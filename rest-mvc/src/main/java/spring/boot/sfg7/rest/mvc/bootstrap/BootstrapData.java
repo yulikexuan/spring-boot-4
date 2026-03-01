@@ -16,6 +16,8 @@ import spring.boot.sfg7.rest.mvc.domain.beer.model.BeerStyle;
 import spring.boot.sfg7.rest.mvc.domain.beer.service.BeerService;
 import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
 import spring.boot.sfg7.rest.mvc.domain.customer.service.CustomerService;
+import spring.boot.sfg7.rest.mvc.domain.ocp.model.Flashcard;
+import spring.boot.sfg7.rest.mvc.domain.ocp.service.FlashcardService;
 
 
 @Slf4j
@@ -25,6 +27,7 @@ class BootstrapData implements CommandLineRunner {
 
     private final BeerService beerService;
     private final CustomerService customerService;
+    private final FlashcardService flashcardService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -103,6 +106,30 @@ class BootstrapData implements CommandLineRunner {
                 .count();
 
         log.info(">>> {} different Customer saved.", numOfSavedCustomers);
+
+        Flashcard fc1 = flashcardService.saveNewFlashcard(Flashcard.builder()
+                .question("Given p q, where both p and q are true expressions, which side will not be evaluated at runtime?")
+                .answer("q")
+                .weight(0)
+                .build());
+
+        Flashcard fc2 = flashcardService.saveNewFlashcard(Flashcard.builder()
+                .question("What is a compile\u2011time constant variable?")
+                .answer("A variable that is marked final and initialized with a literal value when it is declared")
+                .weight(0)
+                .build());
+
+        Flashcard fc3 = flashcardService.saveNewFlashcard(Flashcard.builder()
+                .question("Which functional interface converts from int to double?")
+                .answer("IntToDoubleFunction")
+                .weight(0)
+                .build());
+
+        var flashcardCount = List.of(fc1, fc2, fc3).stream()
+                .filter(f -> f.id() != null)
+                .count();
+
+        log.info(">>> {} different Flashcard saved.", flashcardCount);
     }
 
 } /// :~
