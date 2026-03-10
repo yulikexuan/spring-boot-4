@@ -27,10 +27,11 @@ import spring.boot.sfg7.rest.mvc.web.util.WebUtils;
 
 @Slf4j
 @RestController
-@RequestMapping("/sfg7/api/v1/beer")
+@RequestMapping(BeerController.BEER_PATH)
 @RequiredArgsConstructor
 class BeerController {
 
+    public static final String BEER_PATH = "/sfg7/api/v1/beer";
     private final BeerService beerService;
 
     @GetMapping

@@ -16,7 +16,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.net.URI;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -32,6 +31,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import spring.boot.sfg7.rest.mvc.domain.ocp.model.Flashcard;
 import spring.boot.sfg7.rest.mvc.domain.ocp.service.FlashcardService;
+import tools.jackson.databind.ObjectMapper;
 
 
 @WebMvcTest(FlashcardController.class)

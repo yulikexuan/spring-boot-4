@@ -26,9 +26,11 @@ import spring.boot.sfg7.rest.mvc.web.util.WebUtils;
 
 @Slf4j
 @RestController
-@RequestMapping("/sfg7/api/v1/customer")
+@RequestMapping(CustomerController.CUSTOMER_PATH)
 @RequiredArgsConstructor
 class CustomerController {
+
+    public static final String CUSTOMER_PATH = "/sfg7/api/v1/customer";
 
     private final CustomerService customerService;
 

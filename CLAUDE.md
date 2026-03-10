@@ -3,39 +3,48 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. 
 For comprehensive development guidelines, please refer to [guidelines.md](guidelines.md).
 
+Keep your replies extremely concise and focus on conveying the key information. 
+No unnecessary fluff, no long code snippets.
+
+When working, you can use web search or `context7` mcp to find the relevant documentation if you want to.
+
+Whenever working with any third-party library or something similar, you MUST look up the official documenmtation to ensure that you are working with up-to-date information.
+Use the `DocsExplorer` subagent for efficient documentation lookup.
+
+
 ## Project Overview
 
 A multi-module Maven lab project exploring **Spring Boot 4** (Spring Framework 7) with **Java 25**. Each module is a self-contained learning experiment.
 
-| Module | Description |
-|---|---|
-| `di` | Spring DI fundamentals + JDK 25 language features + optics patterns (hand-rolled) |
-| `data-optics` | Functional optics using the `hkj-spring-boot-starter` annotation processor |
-| `data-jdbc` | Spring Data JDBC with PostgreSQL (school: Student/Course/Enrollment) |
-| `rest-mvc` | REST API with Spring MVC + Spring Data JDBC (beer domain) |
-| `retry` | Spring Core retry (`org.springframework.core.retry`) + `@EnableResilientMethods` |
-| `web-app-demo` | Thymeleaf web app + Spring Data JDBC (book/author/publisher domain) |
+| Module         | Description                                                                       |
+|----------------|-----------------------------------------------------------------------------------|
+| `di`           | Spring DI fundamentals + JDK 25 language features + optics patterns (hand-rolled) |
+| `data-optics`  | Functional optics using the `hkj-spring-boot-starter` annotation processor        |
+| `data-jdbc`    | Spring Data JDBC with PostgreSQL (school: Student/Course/Enrollment)              |
+| `rest-mvc`     | REST API with Spring MVC + Spring Data JDBC (beer domain)                         |
+| `retry`        | Spring Core retry (`org.springframework.core.retry`) + `@EnableResilientMethods`  |
+| `web-app-demo` | Thymeleaf web app + Spring Data JDBC (book/author/publisher domain)               |
 
 ## Build & Test Commands
 
 ```bash
 # Build all modules (skip tests)
-./mvnw clean package -DskipTests
+mvn clean package 
 
 # Build a single module
-./mvnw clean package -DskipTests -pl di
+mvn clean package -DskipTests -pl di
 
 # Run all unit tests for a module
-./mvnw test -pl data-optics
+mvn test -pl data-optics
 
 # Run a single test class
-./mvnw test -pl di -Dtest=CompanyTest
+mvn test -pl di -Dtest=CompanyTest
 
 # Run integration tests (suffix *IT)
-./mvnw verify -pl rest-mvc
+mvn verify -pl rest-mvc
 
 # Run all tests across all modules
-./mvnw verify
+mvn verify
 ```
 
 > **Local Maven repository**: The project uses a custom local repo at `C:/Users/yul/.m2/spring/repository` configured via `.mvn/maven.config`. IntelliJ requires the matching `settings_spring.xml` — see `Local_MVN_Repository.md`.

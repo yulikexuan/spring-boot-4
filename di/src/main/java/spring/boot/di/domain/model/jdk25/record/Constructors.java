@@ -47,4 +47,17 @@ class Constructors {
         // public Reptile(int id) { this.id = id; }
     }
 
+    record Employee(String id, String name) {
+
+        public Employee {
+            if (id == null) throw new IllegalArgumentException("id must not be null");
+        }
+
+        // public Employee() { this("default", "default");}
+        Employee(String id) {
+            this(id, "default");
+        }
+        Employee() { this("default"); }
+    }
+
 } /// :~

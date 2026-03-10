@@ -3,6 +3,8 @@
 package spring.boot.di.domain.model.jdk25.lambda;
 
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
@@ -26,6 +28,10 @@ class LambdasForLiteralWrappers {
     }
 
     static void useSupplier(Supplier<Integer> supplier) {
+    }
+
+    static void varParameters() {
+        BiFunction<Integer, String, String> mix = (var num, var msg) -> num + msg;
     }
 
 } /// :~

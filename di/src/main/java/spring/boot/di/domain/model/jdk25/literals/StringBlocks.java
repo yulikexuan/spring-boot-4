@@ -8,7 +8,8 @@ class StringBlocks {
     static void main(String[] args) {
 
         // analyzeSpaces();
-        theLengthOfStringBlocks();
+        // theLengthOfStringBlocks();
+        stripIndentIsAwesome();
     }
 
     private static void analyzeSpaces() {
@@ -31,6 +32,22 @@ class StringBlocks {
 
         System.out.println(">>> info1: " + info1.length());
         System.out.println(">>> info2: " + info2.length());
+    }
+
+    static void stripIndentIsAwesome() {
+
+        String info = """
+                <html>
+                    <body>
+                        <p>Hello, Java!</p>
+                    </body>
+                </html>
+                """;
+
+        String newInfo = info.stripIndent();
+
+        System.out.println(newInfo);
+        System.out.println(info.equals(newInfo));
     }
 
 } /// :~

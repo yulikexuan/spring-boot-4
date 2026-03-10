@@ -1,0 +1,74 @@
+### Get all Flashcards
+
+GET http://localhost:8080/sfg7/api/v1/flashcard
+Content-Type: application/json
+Accept: application/json
+
+> {%
+	client.test(">>> Response status is 200", function () {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+%}
+
+
+###
+
+
+GET http://localhost:8080/sfg7/api/v1/flashcard/48
+Content-Type: application/json
+Accept: application/json
+
+> {%
+	client.test(">>> Response status is 200", function () {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+	client.test(">>> Response contains only one Flashcard object", function () {
+		client.assert(!Array.isArray(response.body), ">>> Response body should not be an array");
+		client.assert(typeof response.body === 'object', "Response body should be an object");
+	});
+%}
+
+
+### Save a new Flashcard
+
+POST http://localhost:8080/sfg7/api/v1/flashcard
+Content-Type: application/json
+Accept: application/json
+
+{
+  "question": "What class is used to read text values based on a particular locale?",
+  "answer": "ResourceBundle",
+  "weight": 5
+}
+
+
+### Update Flashcard by ID
+
+PUT http://localhost:8080/sfg7/api/v1/flashcard/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "question": "What is the capital of France?",
+  "answer": "Paris (updated)",
+  "weight": 3
+}
+
+
+### Delete Flashcard by ID
+
+DELETE http://localhost:8080/sfg7/api/v1/flashcard/1
+Content-Type: application/json
+Accept: application/json
+
+
+### Patch Flashcard by ID
+
+PATCH http://localhost:8080/sfg7/api/v1/flashcard/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "weight": 5
+}
