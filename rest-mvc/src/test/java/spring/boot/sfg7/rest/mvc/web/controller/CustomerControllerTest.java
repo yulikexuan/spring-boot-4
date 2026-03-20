@@ -32,6 +32,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -40,6 +41,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
 import spring.boot.sfg7.rest.mvc.domain.customer.service.CustomerService;
+import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
 import tools.jackson.databind.ObjectMapper;
 
 
@@ -110,7 +112,29 @@ class CustomerControllerTest {
                 .andExpect(contentMatcher)
                 .andExpect(jsonPath("$.id").value(customerId.toString()))
                 .andExpect(jsonPath("$.name").value(name));
+    }
 
+    @Test
+    void customer_Is_Not_Found() throws Exception {
+
+        // Given
+        var customerId = UUID.randomUUID();
+
+        given(customerService.getCustomerById(customerId))
+                .willThrow(NotFoundException.class);
+
+        final URI customerIdUri = ServletUriComponentsBuilder
+                .fromUriString(CUSTOMER_URI)
+                .path(CUSTOMER_ID_PATH)
+                .buildAndExpand(customerId)
+                .toUri();
+
+        final RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get(customerIdUri)
+                .accept(APPLICATION_JSON);
+
+        // When & Then
+        mockMvc.perform(requestBuilder).andExpect(status().isNotFound());
     }
 
     @Test

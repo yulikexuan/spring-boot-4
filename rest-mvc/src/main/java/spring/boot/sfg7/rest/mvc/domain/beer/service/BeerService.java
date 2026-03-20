@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
 import spring.boot.sfg7.rest.mvc.domain.beer.repository.BeerRepository;
+import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
 
 
 public interface BeerService {
@@ -63,7 +64,8 @@ class BeerServiceImpl implements BeerService {
 
     @Override
     public Beer getBeerById(@NonNull UUID id) {
-        return beerRepository.findById(id).orElseThrow();
+        return beerRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override

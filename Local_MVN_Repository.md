@@ -9,7 +9,7 @@
     - ` -Dmaven.repo.local=C:/Users/yul/.m2/spring/repository `
 
 
-## Setup IDE (IntelliJ) for the new local repository
+## Set up IDE (IntelliJ) for the new local repository
 
 ### Create a new maven Settings.xml file in ` .m2 ` folder
   - Add a new line into the new Settings.xml file

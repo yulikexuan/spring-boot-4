@@ -42,6 +42,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.BeerStyle;
 import spring.boot.sfg7.rest.mvc.domain.beer.service.BeerService;
+import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
 import tools.jackson.databind.ObjectMapper;
 
 
@@ -117,6 +118,27 @@ class BeerControllerTest {
                 .andExpect(jsonPath("$.upc").value("34567"))
                 .andExpect(jsonPath("$.quantityOnHand").value(100))
                 .andExpect(jsonPath("$.price").value(1260));
+    }
+
+    @Test
+    void beer_Is_Not_Found() throws Exception {
+
+        // Given
+        var beerId = UUID.randomUUID();
+
+        given(beerService.getBeerById(beerId)).willThrow(NotFoundException.class);
+
+        final URI beerIdUri = ServletUriComponentsBuilder.fromUriString(BEER_URI)
+                .path(BEER_ID_PATH)
+                .buildAndExpand(beerId)
+                .toUri();
+
+        final RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get(beerIdUri)
+                .accept(APPLICATION_JSON);
+
+        // When & Then
+        mockMvc.perform(requestBuilder).andExpect(status().isNotFound());
     }
 
     @Test

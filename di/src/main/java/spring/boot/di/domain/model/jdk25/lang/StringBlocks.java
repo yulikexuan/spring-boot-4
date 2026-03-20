@@ -1,6 +1,6 @@
 //: spring.boot.di.domain.model.jdk25.literals.StringBlocks.java
 
-package spring.boot.di.domain.model.jdk25.literals;
+package spring.boot.di.domain.model.jdk25.lang;
 
 
 class StringBlocks {
@@ -46,8 +46,11 @@ class StringBlocks {
 
         String newInfo = info.stripIndent();
 
-        System.out.println(newInfo);
+        System.out.println("`" + info + "`");
+        System.out.println("`" + newInfo + "`");
         System.out.println(info.equals(newInfo));
+
+        System.out.println(Math.ceilDiv(10, 3));
     }
 
 } /// :~

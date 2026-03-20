@@ -3,6 +3,7 @@
 package spring.boot.di.domain.model.jdk25.generics;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,9 @@ class TypeParameters {
         Set<? extends RuntimeException> exceptions =
                 // new HashSet<? extends RuntimeException>();
                 new HashSet<RuntimeException>();
+
+        List<? super Number> numbers = new ArrayList<Object>();
+        // numbers.add(new Object());
     }
 
     static void genericParameters(List<Number> list) {

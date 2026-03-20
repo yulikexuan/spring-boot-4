@@ -1,6 +1,6 @@
 //: spring.boot.di.domain.model.jdk25.literals.Boxing.java
 
-package spring.boot.di.domain.model.jdk25.literals;
+package spring.boot.di.domain.model.jdk25.lang;
 
 
 class Boxing {

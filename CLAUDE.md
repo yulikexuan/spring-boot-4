@@ -90,7 +90,10 @@ Files matching `**/*IT.java` are integration tests run by `maven-failsafe-plugin
 
 --- 
 
-## Spring Boot Guidelines
+## Java Development Standards
+Refer to [java-guidelines.md](.junie/java-guidelines.md) for the full list of Java Development Standards.
 
-Refer to [guidelines.md](./.junie/guidelines.md) for the full list of Spring Boot and Java development standards.
 
+## Spring Boot Development Standards
+
+Refer to [spring-boot-guidelines.md](.junie/spring-boot-guidelines.md) for the full list of Spring Boot Development Standards.
