@@ -88,7 +88,7 @@ Files matching `**/*IT.java` are integration tests run by `maven-failsafe-plugin
 - Lombok (`@RequiredArgsConstructor`, `@Slf4j`, `@Builder`) used throughout
 - Records preferred over classes for domain models
 
---- 
+---
 
 ## Java Development Standards
 Refer to [java-guidelines.md](.junie/java-guidelines.md) for the full list of Java Development Standards.
