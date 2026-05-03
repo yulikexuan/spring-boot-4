@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: donut-shop
+#  http:
+#    converters:
+#      preferred-json-mapper: jackson2
+  jackson:
+    # Backward Compatibility
+    use-jackson2-defaults: true
+    serialization:
+      # Pretty-print JSON
+      indent-output: true
+
+#spring:
+#  http:
+#    converters:
+#      preferred-json-mapper=jackson2:
+
+#  jackson:
+#    mapper:
+#      sort-properties-alphabetically: false
+
+#spring:
+#  jackson:
+#    serialization:
+#      fail-on-empty-beans: false # Allow serializing objects with no properties
+#      write-dates-as-timestamps: false # ISO-8601 strings (Jackson 3 default)
+
+#spring:
+#  jackson:
+#    deserialization:
+#      fail-on-unknown-properties: false # Ignore unknown JSON fields
+#      accept-empty-string-as-null-object: true # Treat "" as null

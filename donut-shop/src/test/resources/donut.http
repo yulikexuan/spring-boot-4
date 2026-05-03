@@ -1,0 +1,13 @@
+### Donut Summary
+
+GET http://localhost:8080/api/donuts/summary
+
+
+### Donut Public
+
+GET http://localhost:8080/api/donuts/public
+
+
+### Donut Internal
+
+GET http://localhost:8080/api/donuts/internal
