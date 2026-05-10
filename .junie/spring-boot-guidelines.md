@@ -1,6 +1,7 @@
 # Guidelines for Using Junie
 
-This document outlines the coding standards and best practices for Junie when working on this project, which is built on **Spring Boot 4.0.3** and **Java 25**.
+This document outlines the coding standards and best practices for Junie when working on this project, 
+which is built on **Spring Boot 4.0.6** and **Java 25**.
 
 ## Project Overview
 
@@ -17,7 +18,7 @@ A multi-module Maven lab project exploring **Spring Boot 4** (Spring Framework 7
 
 ---
 
-## Spring Boot 4.0.3
+## Spring Boot 4.0.6
 
 # Spring Boot Guidelines
 
