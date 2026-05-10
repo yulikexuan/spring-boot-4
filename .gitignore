@@ -36,6 +36,7 @@ build/
 .vscode/
 
 ### Claude Code
-**/.claude/
-**/CLAUDE.md
 **/CLAUDE.local.md
+
+### Spec-Kit
+**/.specify/scratch/

@@ -19,7 +19,7 @@ CREATE TABLE beer (
 CREATE TABLE customer (
     id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     version          INTEGER,
-    name        VARCHAR(255),
+    name             VARCHAR(255),
     created_date     TIMESTAMP,
     update_date      TIMESTAMP);
 
