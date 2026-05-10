@@ -8,15 +8,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Spring MVC REST API on Spring Boot 4 / Spring Data JDBC / PostgreSQL. Three independent sub-domains share an identical CRUD pattern:
+Spring MVC REST API on Spring Boot 4 / Spring Data JDBC / PostgreSQL. 
 
-| Sub-domain | Base path                | ID type | Notes                  |
-|------------|--------------------------|---------|------------------------|
-| Beer       | `/sfg7/api/v1/beer`      | UUID    | `BeerStyle` enum       |
-| Customer   | `/sfg7/api/v1/customer`  | UUID    |                        |
-| Flashcard  | `/sfg7/api/v1/flashcard` | Long    | OCP exam-prep; BIGSERIAL |
+Three independent subdomains share an identical CRUD pattern:
 
-Layered: **Controller → Service (interface + impl) → Repository**. The service interface and its package-private `*Impl` live in the **same `.java` file** (e.g. `BeerService.java` declares both `BeerService` and `BeerServiceImpl`).
+| Sub-domain   | Base path                  | ID type   | Notes                    |
+|--------------|----------------------------|-----------|--------------------------|
+| Beer         | `/sfg7/api/v1/beer`        | UUID      | `BeerStyle` enum         |
+| Customer     | `/sfg7/api/v1/customer`    | UUID      |                          |
+| Flashcard    | `/sfg7/api/v1/flashcard`   | Long      | OCP exam-prep; BIGSERIAL |
+
+Layered: **Controller → Service (interface + impl) → Repository**. 
+
+The service interface and its package-private `*Impl` live in the **same `.java` file** (e.g. `BeerService.java` declares both `BeerService` and `BeerServiceImpl`).
 
 ## Build & Run
 
@@ -59,11 +63,11 @@ Two SQL files in `src/main/resources/`:
 - `schema.sql` — **DROP + CREATE** of all three tables. Auto-loaded on every start via `spring.sql.init.mode: always`. This is what makes `BootstrapData` non-idempotent inserts safe — every restart begins on empty tables.
 - `schema_renew.sql` — manual `TRUNCATE … RESTART IDENTITY CASCADE` + `VACUUM FULL`. Not auto-loaded; run by hand against a live DB to reset without restarting.
 
-| Table       | PK type   | Key columns                                                                                       |
-|-------------|-----------|---------------------------------------------------------------------------------------------------|
-| `beer`      | UUID      | `version`, `beer_name`, `beer_style` (VARCHAR 50), `upc`, `quantity_on_hand`, `price` (int cents), `created_date`, `update_date` |
-| `customer`  | UUID      | `version`, `name`, `created_date`, `update_date`                                                  |
-| `flashcard` | BIGSERIAL | `question` (VARCHAR 500), `answer` (VARCHAR 1000), `weight`                                       |
+| Table         | PK type     | Key columns                                                                                                                      |
+|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------|
+| `beer`        | UUID        | `version`, `beer_name`, `beer_style` (VARCHAR 50), `upc`, `quantity_on_hand`, `price` (int cents), `created_date`, `update_date` |
+| `customer`    | UUID        | `version`, `name`, `created_date`, `update_date`                                                                                 |
+| `flashcard`   | BIGSERIAL   | `question` (VARCHAR 500), `answer` (VARCHAR 1000), `weight`                                                                      |
 
 - UUIDs default to `gen_random_uuid()` — no application-side ID generation.
 - Tables are independent (no FKs); each is its own aggregate root.
