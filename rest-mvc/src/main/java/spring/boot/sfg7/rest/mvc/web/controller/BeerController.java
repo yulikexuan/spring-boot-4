@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
+import spring.boot.sfg7.rest.mvc.domain.beer.dto.BeerDto;
 import spring.boot.sfg7.rest.mvc.domain.beer.service.BeerService;
 import spring.boot.sfg7.rest.mvc.web.util.WebUtils;
 
@@ -35,13 +35,13 @@ class BeerController {
     private final BeerService beerService;
 
     @GetMapping
-    public List<Beer> listBeers(){
+    public List<BeerDto> listBeers() {
         return beerService.findAllBeers();
     }
 
     @RequestMapping(value = "{beerId}", method = RequestMethod.GET)
     @GetMapping(value = "{beerId}")
-    public Beer getBeerById(@PathVariable UUID beerId){
+    public BeerDto getBeerById(@PathVariable UUID beerId) {
 
         log.debug("Get Beer by Id - in controller");
 
@@ -49,7 +49,7 @@ class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity<URI> saveNewBeer(@RequestBody Beer beer) {
+    public ResponseEntity<URI> saveNewBeer(@RequestBody BeerDto beer) {
 
         var newBeer = beerService.saveNewBeer(beer);
 
@@ -60,7 +60,7 @@ class BeerController {
 
     @PutMapping("{beerId}")
     public ResponseEntity<Void> updateBeer(
-            @PathVariable UUID beerId, @RequestBody Beer beer) {
+            @PathVariable UUID beerId, @RequestBody BeerDto beer) {
 
         beerService.updateBeerById(beerId, beer);
 
@@ -77,7 +77,7 @@ class BeerController {
 
     @PatchMapping("{beerId}")
     public ResponseEntity<Void> patchBeer(
-            @PathVariable UUID beerId, @RequestBody Beer beer) {
+            @PathVariable UUID beerId, @RequestBody BeerDto beer) {
 
         beerService.patchBeerById(beerId, beer);
 

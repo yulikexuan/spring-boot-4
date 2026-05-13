@@ -11,7 +11,8 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import spring.boot.sfg7.rest.mvc.domain.beer.dto.BeerDto;
+import spring.boot.sfg7.rest.mvc.domain.beer.dto.BeerMapper;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
 import spring.boot.sfg7.rest.mvc.domain.beer.repository.BeerRepository;
 import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
@@ -19,17 +20,17 @@ import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
 
 public interface BeerService {
 
-    Beer saveNewBeer(Beer beer);
+    BeerDto saveNewBeer(BeerDto beer);
 
-    List<Beer> findAllBeers();
+    List<BeerDto> findAllBeers();
 
-    Beer getBeerById(UUID id);
+    BeerDto getBeerById(UUID id);
 
-    void updateBeerById(UUID beerId, Beer beer);
+    void updateBeerById(UUID beerId, BeerDto beer);
 
     void deleteBeerById(UUID beerId);
 
-    void patchBeerById(UUID beerId, Beer beer);
+    void patchBeerById(UUID beerId, BeerDto beer);
 }
 
 
@@ -39,13 +40,14 @@ public interface BeerService {
 class BeerServiceImpl implements BeerService {
 
     private final BeerRepository beerRepository;
+    private final BeerMapper beerMapper;
 
     @Override
-    public Beer saveNewBeer(@NonNull Beer beer) {
+    public BeerDto saveNewBeer(@NonNull BeerDto beer) {
 
         var data = Beer.builder()
-                .beerName(beer.beerName())
                 .version(beer.version())
+                .beerName(beer.beerName())
                 .beerStyle(beer.beerStyle())
                 .upc(beer.upc())
                 .quantityOnHand(beer.quantityOnHand())
@@ -54,34 +56,43 @@ class BeerServiceImpl implements BeerService {
                 .updateDate(Instant.now())
                 .build();
 
-        return beerRepository.save(data);
+        return beerMapper.toDto(beerRepository.save(data));
     }
 
     @Override
-    public List<Beer> findAllBeers() {
-        return beerRepository.findAll();
+    public List<BeerDto> findAllBeers() {
+        return beerRepository.findAll().stream()
+                .map(beerMapper::toDto)
+                .toList();
     }
 
     @Override
-    public Beer getBeerById(@NonNull UUID id) {
+    public BeerDto getBeerById(@NonNull UUID id) {
         return beerRepository.findById(id)
+                .map(beerMapper::toDto)
                 .orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
-    public void updateBeerById(UUID beerId, Beer beer) {
+    public void updateBeerById(UUID beerId, BeerDto beer) {
 
-        var existingBeer = getBeerById(beerId);
-        var newBeer = existingBeer.updateWith(beerId, beer);
+        var existingBeer = beerRepository.findById(beerId)
+                .orElseThrow(() -> new NotFoundException(beerId));
+
+        var incoming = beerMapper.toEntity(beer);
+        var newBeer = existingBeer.updateWith(beerId, incoming);
 
         beerRepository.save(newBeer);
     }
 
     @Override
-    public void patchBeerById(UUID beerId, Beer beer) {
+    public void patchBeerById(UUID beerId, BeerDto beer) {
 
-        var existingBeer = getBeerById(beerId);
-        var newBeer = existingBeer.patchWith(beerId, beer);
+        var existingBeer = beerRepository.findById(beerId)
+                .orElseThrow(() -> new NotFoundException(beerId));
+
+        var incoming = beerMapper.toEntity(beer);
+        var newBeer = existingBeer.patchWith(beerId, incoming);
 
         beerRepository.save(newBeer);
     }

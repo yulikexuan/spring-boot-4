@@ -13,7 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.BeerStyle;
-import spring.boot.sfg7.rest.mvc.domain.beer.service.BeerService;
+import spring.boot.sfg7.rest.mvc.domain.beer.repository.BeerRepository;
 import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
 import spring.boot.sfg7.rest.mvc.domain.customer.service.CustomerService;
 import spring.boot.sfg7.rest.mvc.domain.ocp.model.Flashcard;
@@ -25,7 +25,7 @@ import spring.boot.sfg7.rest.mvc.domain.ocp.service.FlashcardService;
 @RequiredArgsConstructor
 class BootstrapData implements CommandLineRunner {
 
-    private final BeerService beerService;
+    private final BeerRepository beerRepository;
     private final CustomerService customerService;
     private final FlashcardService flashcardService;
 
@@ -43,7 +43,7 @@ class BootstrapData implements CommandLineRunner {
                 .updateDate(Instant.now())
                 .build();
 
-        beer1 = beerService.saveNewBeer(beer1);
+        beer1 = beerRepository.save(beer1);
 
         Beer beer2 = Beer.builder()
                 .version(1)
@@ -56,7 +56,7 @@ class BootstrapData implements CommandLineRunner {
                 .updateDate(Instant.now())
                 .build();
 
-        beer2 = beerService.saveNewBeer(beer2);
+        beer2 = beerRepository.save(beer2);
 
         Beer beer3 = Beer.builder()
                 .version(1)
@@ -69,7 +69,7 @@ class BootstrapData implements CommandLineRunner {
                 .updateDate(Instant.now())
                 .build();
 
-        beer3 = beerService.saveNewBeer(beer3);
+        beer3 = beerRepository.save(beer3);
 
         var beerCount = Stream.of(beer1, beer2, beer3)
                 .filter(b -> b.id() != null)

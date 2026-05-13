@@ -39,7 +39,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
+import spring.boot.sfg7.rest.mvc.domain.beer.dto.BeerDto;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.BeerStyle;
 import spring.boot.sfg7.rest.mvc.domain.beer.service.BeerService;
 import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
@@ -68,7 +68,7 @@ class BeerControllerTest {
     private ArgumentCaptor<UUID> uuidArgumentCaptor;
 
     @Captor
-    private ArgumentCaptor<Beer> beerArgumentCaptor;
+    private ArgumentCaptor<BeerDto> beerArgumentCaptor;
 
     @BeforeEach
     void setUp() {
@@ -84,7 +84,7 @@ class BeerControllerTest {
         // Given
         final String beerId = randomUUID();
 
-        Beer testBeer = Beer.builder()
+        BeerDto testBeer = BeerDto.builder()
                 .id(UUID.fromString(beerId))
                 .beerName("Heineken Silver")
                 .beerStyle(BeerStyle.LAGER)
@@ -145,8 +145,8 @@ class BeerControllerTest {
     void able_To_Get_All_Beers_In_List() throws Exception {
 
         // Given
-        List<Beer> beers = List.of(
-                Beer.builder()
+        List<BeerDto> beers = List.of(
+                BeerDto.builder()
                         .id(UUID.fromString(randomUUID()))
                         .version(1)
                         .beerName("Galaxy Cat")
@@ -157,7 +157,7 @@ class BeerControllerTest {
                         .createdDate(Instant.now())
                         .updateDate(Instant.now())
                         .build(),
-                Beer.builder()
+                BeerDto.builder()
                         .id(UUID.fromString(randomUUID()))
                         .version(1)
                         .beerName("Crank")
@@ -194,7 +194,7 @@ class BeerControllerTest {
     void able_To_Create_New_Beer() throws Exception {
 
         // Given
-        Beer requestBeer = Beer.builder()
+        BeerDto requestBeer = BeerDto.builder()
                 .beerName("New Brew")
                 .beerStyle(BeerStyle.IPA)
                 .upc("99999")
@@ -203,7 +203,7 @@ class BeerControllerTest {
                 .build();
 
         UUID newBeerId = UUID.randomUUID();
-        Beer savedBeer = Beer.builder()
+        BeerDto savedBeer = BeerDto.builder()
                 .id(newBeerId)
                 .beerName(requestBeer.beerName())
                 .beerStyle(requestBeer.beerStyle())
@@ -214,7 +214,7 @@ class BeerControllerTest {
                 .updateDate(Instant.now())
                 .build();
 
-        given(beerService.saveNewBeer(any(Beer.class))).willReturn(savedBeer);
+        given(beerService.saveNewBeer(any(BeerDto.class))).willReturn(savedBeer);
 
         RequestBuilder postBuilder = MockMvcRequestBuilders.post(BEER_URI)
                 .contentType(APPLICATION_JSON)
@@ -240,7 +240,7 @@ class BeerControllerTest {
         // Given
         UUID beerId = UUID.randomUUID();
 
-        Beer beer = Beer.builder()
+        BeerDto beer = BeerDto.builder()
                 .id(beerId)
                 .beerName("Nice Beer")
                 .beerStyle(BeerStyle.LAGER)

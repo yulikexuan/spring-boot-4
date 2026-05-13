@@ -28,10 +28,18 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<hkj-spring-boot-starter.version>0.3.4</hkj-spring-boot-starter.version>
 		<guava.version>33.5.0-jre</guava.version>
+		<mapstruct.version>1.6.3</mapstruct.version>
+		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<mockito.final.version>${mockito.version}</mockito.final.version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -88,9 +96,19 @@
 							<version>${lombok.version}</version>
 						</path>
 						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>${lombok-mapstruct-binding.version}</version>
+						</path>
+						<path>
 							<groupId>io.github.higher-kinded-j</groupId>
 							<artifactId>hkj-processor-plugins</artifactId>
 							<version>${hkj-spring-boot-starter.version}</version>
+						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
 						</path>
 					</annotationProcessorPaths>
 					<fork>true</fork>
