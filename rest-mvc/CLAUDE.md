@@ -82,6 +82,5 @@ Two SQL files in `src/main/resources/`:
 - `BootstrapData` (`CommandLineRunner`) inserts 3 rows per table on every start. **It is not idempotent** — correctness depends on `schema.sql` running DROP+CREATE first. Don't add a row-count guard without also disabling `schema.sql` execution.
 
 <!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
+Active plan: [specs/001-use-beer-dto/plan.md](specs/001-use-beer-dto/plan.md) — migrate `BeerController` / `BeerService` to exchange `BeerDto` (record, no Spring Data annotations) with MapStruct-backed conversion inside `BeerServiceImpl`; `BeerRepository` stays on `Beer`. See plan for tech context, file-by-file changes, and verification.
 <!-- SPECKIT END -->
