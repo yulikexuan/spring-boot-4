@@ -9,40 +9,41 @@ import java.util.UUID;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NullMarked;
-import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
+import spring.boot.sfg7.rest.mvc.domain.customer.dto.CustomerDto;
+import spring.boot.sfg7.rest.mvc.domain.customer.dto.CustomerMapper;
 import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
 import spring.boot.sfg7.rest.mvc.domain.customer.repository.CustomerRepository;
+import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
 
 
 public interface CustomerService {
 
-    Customer saveNewCustomer(Customer customer);
+    CustomerDto saveNewCustomer(CustomerDto customer);
 
-    List<Customer> findAllCustomers();
+    List<CustomerDto> findAllCustomers();
 
-    Customer getCustomerById(UUID id);
+    CustomerDto getCustomerById(UUID id);
 
-    void updateCustomerById(UUID customerId, Customer customer);
+    void updateCustomerById(UUID customerId, CustomerDto customer);
 
     void deleteCustomerById(UUID customerId);
 
-    void patchCustomerById(UUID customerId, Customer customer);
+    void patchCustomerById(UUID customerId, CustomerDto customer);
 }
 
 
-@Slf4j
 @Service
 @NullMarked
 @RequiredArgsConstructor
 class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     @Override
-    public Customer saveNewCustomer(@NonNull Customer customer) {
+    public CustomerDto saveNewCustomer(@NonNull CustomerDto customer) {
 
         var data = Customer.builder()
                 .version(customer.version())
@@ -51,27 +52,31 @@ class CustomerServiceImpl implements CustomerService {
                 .updateDate(Instant.now())
                 .build();
 
-        return customerRepository.save(data);
+        return customerMapper.toDto(customerRepository.save(data));
     }
 
     @Override
-    public List<Customer> findAllCustomers() {
-        return customerRepository.findAll();
+    public List<CustomerDto> findAllCustomers() {
+        return customerRepository.findAll().stream()
+                .map(customerMapper::toDto)
+                .toList();
     }
 
     @Override
-    public @Nullable Customer getCustomerById(UUID id) {
-        // Do we need to throw an exception here when nothing found?
-        return customerRepository.findById(id).orElseThrow();
+    public CustomerDto getCustomerById(@NonNull UUID id) {
+        return customerRepository.findById(id)
+                .map(customerMapper::toDto)
+                .orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
-    public void updateCustomerById(UUID customerId, Customer customer) {
+    public void updateCustomerById(UUID customerId, CustomerDto customer) {
 
-        var existingCustomer = getCustomerById(customerId);
+        var existingCustomer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new NotFoundException(customerId));
 
-        var newCustomer = existingCustomer.updateWith(
-                customerId, existingCustomer);
+        var incoming = customerMapper.toEntity(customer);
+        var newCustomer = existingCustomer.updateWith(customerId, incoming);
 
         customerRepository.save(newCustomer);
     }
@@ -82,12 +87,13 @@ class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void patchCustomerById(UUID customerId, Customer customer) {
+    public void patchCustomerById(UUID customerId, CustomerDto customer) {
 
-        var existingCustomer = getCustomerById(customerId);
+        var existingCustomer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new NotFoundException(customerId));
 
-        var newCustomer = existingCustomer.patchWith(
-                customerId, customer);
+        var incoming = customerMapper.toEntity(customer);
+        var newCustomer = existingCustomer.patchWith(customerId, incoming);
 
         customerRepository.save(newCustomer);
     }

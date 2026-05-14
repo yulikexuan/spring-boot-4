@@ -15,7 +15,7 @@ import spring.boot.sfg7.rest.mvc.domain.beer.model.Beer;
 import spring.boot.sfg7.rest.mvc.domain.beer.model.BeerStyle;
 import spring.boot.sfg7.rest.mvc.domain.beer.repository.BeerRepository;
 import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
-import spring.boot.sfg7.rest.mvc.domain.customer.service.CustomerService;
+import spring.boot.sfg7.rest.mvc.domain.customer.repository.CustomerRepository;
 import spring.boot.sfg7.rest.mvc.domain.ocp.model.Flashcard;
 import spring.boot.sfg7.rest.mvc.domain.ocp.service.FlashcardService;
 
@@ -26,7 +26,7 @@ import spring.boot.sfg7.rest.mvc.domain.ocp.service.FlashcardService;
 class BootstrapData implements CommandLineRunner {
 
     private final BeerRepository beerRepository;
-    private final CustomerService customerService;
+    private final CustomerRepository customerRepository;
     private final FlashcardService flashcardService;
 
     @Override
@@ -97,9 +97,9 @@ class BootstrapData implements CommandLineRunner {
                 .build();
 
         List<Customer> customers = List.of(
-            customerService.saveNewCustomer(c1),
-            customerService.saveNewCustomer(c3),
-            customerService.saveNewCustomer(c2));
+            customerRepository.save(c1),
+            customerRepository.save(c3),
+            customerRepository.save(c2));
 
         var numOfSavedCustomers = customers.stream()
                 .filter(c -> c.id() != null)

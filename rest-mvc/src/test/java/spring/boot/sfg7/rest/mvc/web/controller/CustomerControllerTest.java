@@ -39,7 +39,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
+import spring.boot.sfg7.rest.mvc.domain.customer.dto.CustomerDto;
 import spring.boot.sfg7.rest.mvc.domain.customer.service.CustomerService;
 import spring.boot.sfg7.rest.mvc.domain.service.NotFoundException;
 import tools.jackson.databind.ObjectMapper;
@@ -67,7 +67,7 @@ class CustomerControllerTest {
     private ArgumentCaptor<UUID> idCaptor;
 
     @Captor
-    private ArgumentCaptor<Customer> customerCaptor;
+    private ArgumentCaptor<CustomerDto> customerCaptor;
 
     private UUID customerId;
     private String name;
@@ -83,7 +83,7 @@ class CustomerControllerTest {
 
         // Given
         Instant instant = Instant.now();
-        Customer customer = Customer.builder()
+        CustomerDto customer = CustomerDto.builder()
                 .id(customerId)
                 .name(name)
                 .version(1)
@@ -141,12 +141,12 @@ class CustomerControllerTest {
     void able_To_Create_New_Customer() throws Exception {
 
         // Given
-        Customer newCustomer = Customer.builder()
+        CustomerDto newCustomer = CustomerDto.builder()
                 .name(name)
                 .version(1)
                 .build();
         UUID id = UUID.randomUUID();
-        Customer savedCustomer = Customer.builder()
+        CustomerDto savedCustomer = CustomerDto.builder()
                 .id(id)
                 .name(newCustomer.name())
                 .version(newCustomer.version())
@@ -181,7 +181,7 @@ class CustomerControllerTest {
 
         // Given
         UUID customerId = UUID.randomUUID();
-        Customer customer = Customer.builder()
+        CustomerDto customer = CustomerDto.builder()
                 .id(customerId)
                 .name(name)
                 .version(1)

@@ -14,7 +14,7 @@ Accept: application/json
 ###
 
 
-GET http://localhost:8080/sfg7/api/v1/customer/109b47cf-8986-4efb-a623-844237bbd936
+GET http://localhost:8080/sfg7/api/v1/customer/0c5f8291-b3d5-4e59-8010-c4d7908f393c
 Content-Type: application/json
 Accept: application/json
 
@@ -45,18 +45,18 @@ Accept: application/json
 ### Update Customer by ID
 
 
-PUT http://localhost:8080/sfg7/api/v1/customer/43c4958b-e64c-4617-9e11-844174c45d05
+PUT http://localhost:8080/sfg7/api/v1/customer/7e79fe98-6b84-4760-9c41-5cf2295dbaf9
 Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "Rogers"
+  "name": "Rogers-1"
 }
 
 
 ### Delete Customer by Customer ID
 
-DELETE http://localhost:8080/sfg7/api/v1/customer/454be715-a5ff-491b-b49a-39153dfa4e5e
+DELETE http://localhost:8080/sfg7/api/v1/customer/fc4fbfc7-4b42-4883-88cd-1b4d6e302404
 Content-Type: application/json
 Accept: application/json
 

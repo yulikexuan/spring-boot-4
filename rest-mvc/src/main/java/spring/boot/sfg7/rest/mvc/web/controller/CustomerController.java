@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import spring.boot.sfg7.rest.mvc.domain.customer.model.Customer;
+import spring.boot.sfg7.rest.mvc.domain.customer.dto.CustomerDto;
 import spring.boot.sfg7.rest.mvc.domain.customer.service.CustomerService;
 import spring.boot.sfg7.rest.mvc.web.util.WebUtils;
 
@@ -35,13 +35,13 @@ class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping
-    public List<Customer> listCustomers() {
+    public List<CustomerDto> listCustomers() {
 
         return customerService.findAllCustomers();
     }
 
     @GetMapping(value = "{customerId}")
-    public Customer getCustomerById(@PathVariable UUID customerId) {
+    public CustomerDto getCustomerById(@PathVariable UUID customerId) {
 
         log.debug(">>> Get Customer by Id - in controller");
 
@@ -49,7 +49,7 @@ class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<URI> saveNewCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<URI> saveNewCustomer(@RequestBody CustomerDto customer) {
 
         var newCustomer = customerService.saveNewCustomer(customer);
 
@@ -60,7 +60,7 @@ class CustomerController {
 
     @PutMapping("{customerId}")
     public ResponseEntity<Void> updateCustomerById(
-            @PathVariable UUID customerId, @RequestBody Customer customer) {
+            @PathVariable UUID customerId, @RequestBody CustomerDto customer) {
 
         customerService.updateCustomerById(customerId, customer);
 
@@ -77,7 +77,7 @@ class CustomerController {
 
     @PatchMapping("{customerId}")
     public ResponseEntity<Void> patchCustomerById(
-            @PathVariable UUID customerId, @RequestBody Customer customer) {
+            @PathVariable UUID customerId, @RequestBody CustomerDto customer) {
 
         customerService.patchCustomerById(customerId, customer);
 
