@@ -3,7 +3,7 @@
 ## Before Everything 
 
 1. Please inspect module `./rest-mvc` to understand its structure and tech-stack.
-2. Please also refer to [guidelines.md](./.junie/guidelines.md) for the full list of Spring Boot and Java development standards.
+2. Please also refer to [java-guidelines.md](./.claude/guidelines/java-guidelines.md), [spring-boot-guidelines.md](./.claude/guidelines/spring-boot-guidelines.md), and [java-test-guidelines.md](./.claude/guidelines/java-test-guidelines.md) for the full list of Spring Boot and Java development standards.
 
 ## There is a new added domain called `ocp` in 
 `./rest-mvc/src/main/java/spring/boot/sfg7/rest/mvc/domain/ocp`

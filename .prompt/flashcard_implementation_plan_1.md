@@ -20,7 +20,7 @@ implementation plan for the Flashcard feature described in
 3. Read the current schema file to understand what already exists:
    `rest-mvc/src/main/resources/schema_renew.sql`
 
-4. Read the guidelines at `.junie/guidelines.md` for code style rules.
+4. Read the guidelines at `.claude/guidelines/java-guidelines.md`, `.claude/guidelines/spring-boot-guidelines.md`, and `.claude/guidelines/java-test-guidelines.md` for code style rules.
 
 ## What the plan must cover (in order)
 

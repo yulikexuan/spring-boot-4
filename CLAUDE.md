@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. 
 
 For comprehensive development guidelines, 
-please refer to [java-guidelines.md](./.junie/java-guidelines.md) and [spring-boot-guidelines.md](./.junie/spring-boot-guidelines.md).
+please refer to [java-guidelines.md](./.claude/guidelines/java-guidelines.md), [java-test-guidelines.md](./.claude/guidelines/java-test-guidelines.md), and [spring-boot-guidelines.md](./.claude/guidelines/spring-boot-guidelines.md).
 
 Keep your replies extremely concise and focus on conveying the key information. 
 No unnecessary fluff, no long code snippets.
@@ -99,9 +99,14 @@ Files matching `**/*IT.java` are integration tests run by `maven-failsafe-plugin
 ---
 
 ## Java Development Standards
-Refer to [java-guidelines.md](.junie/java-guidelines.md) for the full list of Java Development Standards.
+Refer to [java-guidelines.md](.claude/guidelines/java-guidelines.md) for the full list of Java Development Standards.
 
 
 ## Spring Boot Development Standards
 
-Refer to [spring-boot-guidelines.md](.junie/spring-boot-guidelines.md) for the full list of Spring Boot Development Standards.
+Refer to [spring-boot-guidelines.md](.claude/guidelines/spring-boot-guidelines.md) for the full list of Spring Boot Development Standards.
+
+
+## Java Test Development Standards
+
+Refer to [java-test-guidelines.md](.claude/guidelines/java-test-guidelines.md) for the full list of Java Test Development Standards.

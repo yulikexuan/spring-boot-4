@@ -4,7 +4,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-> Shared standards: [root CLAUDE.md](../CLAUDE.md), [java-guidelines](../.junie/java-guidelines.md), [spring-boot-guidelines](../.junie/spring-boot-guidelines.md).
+> Shared standards: [root CLAUDE.md](../CLAUDE.md), [java-guidelines](../.claude/guidelines/java-guidelines.md), [spring-boot-guidelines](../.claude/guidelines/spring-boot-guidelines.md), [java-test-guidelines](../.claude/guidelines/java-test-guidelines.md).
 
 ## Overview
 
@@ -49,6 +49,8 @@ mvn spring-boot:run -pl rest-mvc
 - `Customer` and `Flashcard` records are annotated `@GenerateLenses` (hkj optics processor); `Beer` is not. Lenses are generated under `target/generated-sources/`.
 
 ## Test Conventions
+
+> See [java-test-guidelines](../.claude/guidelines/java-test-guidelines.md) for the full set of test development standards.
 
 - **Controller slice** — `@WebMvcTest(XController.class)` + `@MockitoBean` for the service. Inject `MockMvc` via `@Autowired`. Import `WebMvcTest` from `org.springframework.boot.webmvc.test.autoconfigure` (Spring Boot 4 path), not the legacy autoconfigure package.
 - **Service unit** — `@ExtendWith(MockitoExtension.class)` + `@Mock` repository + `@InjectMocks` impl; `BDDMockito.given(…)` / `then(mock).should(…)`.

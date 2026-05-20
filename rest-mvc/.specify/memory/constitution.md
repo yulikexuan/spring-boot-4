@@ -32,8 +32,9 @@ Templates requiring updates:
                                                   guidance must be overridden by /speckit-tasks for
                                                   this module — no template edit needed)
   - ⚠ rest-mvc/CLAUDE.md                          (already documents test conventions — aligned)
-  - ⚠ ../.junie/java-guidelines.md                (canonical reference for P-III — verify present)
-  - ⚠ ../.junie/spring-boot-guidelines.md         (canonical reference for P-IV — verify present)
+  - ⚠ ../.claude/guidelines/java-guidelines.md        (canonical reference for P-III — verify present)
+  - ⚠ ../.claude/guidelines/spring-boot-guidelines.md (canonical reference for P-IV — verify present)
+  - ⚠ ../.claude/guidelines/java-test-guidelines.md   (canonical reference for P-II — verify present)
 
 Deferred / TODOs:
   - None.
@@ -82,7 +83,7 @@ Skipping a layer's unit tests collapses the layer boundary the module is trying 
 ### III. Modern Java Practice
 
 Code MUST track the Java 25 / JDK feature baseline established by the parent project's
-[`java-guidelines.md`](../../../.junie/java-guidelines.md).
+[`java-guidelines.md`](../../../.claude/guidelines/java-guidelines.md).
 
 - Records over classes for domain models, DTOs, and value objects.
 - `var` for local inference where the right-hand side makes the type obvious; explicit types at
@@ -103,7 +104,7 @@ defeats that purpose.
 ### IV. Spring Boot Idiomatic Practice
 
 Code MUST follow the parent project's
-[`spring-boot-guidelines.md`](../../../.junie/spring-boot-guidelines.md) and the conventions
+[`spring-boot-guidelines.md`](../../../.claude/guidelines/spring-boot-guidelines.md) and the conventions
 already documented in `rest-mvc/CLAUDE.md`.
 
 - HTTP semantics: `POST` → 201 + `Location` header (built via `WebUtils.buildLocation(...)`);
@@ -185,8 +186,9 @@ mocking annotation; cargo-culting Boot 3 idioms produces silently broken example
   A "complexity-justified" deviation MUST appear in the PR's `Complexity Tracking` table
   (per the plan template) with the simpler alternative explicitly rejected.
 - **Runtime guidance**: For day-to-day development, consult
-  [`rest-mvc/CLAUDE.md`](../../CLAUDE.md), [`java-guidelines`](../../../.junie/java-guidelines.md),
-  and [`spring-boot-guidelines`](../../../.junie/spring-boot-guidelines.md). The constitution
+  [`rest-mvc/CLAUDE.md`](../../CLAUDE.md), [`java-guidelines`](../../../.claude/guidelines/java-guidelines.md),
+  [`spring-boot-guidelines`](../../../.claude/guidelines/spring-boot-guidelines.md), and
+  [`java-test-guidelines`](../../../.claude/guidelines/java-test-guidelines.md). The constitution
   is the authority; the guidelines are the elaboration.
 
 **Version**: 1.0.0 | **Ratified**: 2026-05-09 | **Last Amended**: 2026-05-09

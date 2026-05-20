@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "postgres-restmvc": {
+      "command": "uvx",
+      "args": ["--python", "3.12", "postgres-mcp", "--access-mode=restricted"],
+      "env": {
+        "DATABASE_URI": "postgresql://postgres:${DATASOURCE_PASSWORD}@localhost:54316/postgres?options=-c%20search_path%3Dpublic"
+      }
+    }
+  }
+}
