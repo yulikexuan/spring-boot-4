@@ -185,7 +185,9 @@
 		<module>data-jdbc</module>
 		<module>rest-mvc</module>
 		<module>retry</module>
-		<module>web-app-demo</module><module>donut-shop</module>
+		<module>web-app-demo</module>
+		<module>donut-shop</module>
+		<module>modulith</module>
 	</modules>
 	
 </project>
